@@ -1,0 +1,278 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Saved Jobs - Talvion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#dad7ff",
+                    "error": "#ba1a1a",
+                    "primary": "#3525cd",
+                    "inverse-primary": "#c3c0ff",
+                    "tertiary-container": "#a44100",
+                    "secondary-container": "#d9dff5",
+                    "secondary": "#575e70",
+                    "on-secondary-fixed-variant": "#404758",
+                    "on-secondary-fixed": "#141b2b",
+                    "secondary-fixed-dim": "#c0c6db",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-primary-fixed": "#0f0069",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#7e3000",
+                    "secondary-fixed": "#dce2f7",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#351000",
+                    "on-surface-variant": "#464555",
+                    "primary-fixed": "#e2dfff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "surface-tint": "#4d44e3",
+                    "inverse-on-surface": "#f0f1f2",
+                    "outline-variant": "#c7c4d8",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-variant": "#e1e3e4",
+                    "on-secondary-container": "#5c6274",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "primary-container": "#4f46e5",
+                    "background": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "surface-container": "#edeeef",
+                    "surface-container-high": "#e7e8e9",
+                    "tertiary-fixed": "#ffdbcc",
+                    "outline": "#777587",
+                    "on-tertiary-container": "#ffd2be",
+                    "surface-dim": "#d9dadb",
+                    "on-surface": "#191c1d",
+                    "surface": "#f8f9fa",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "lg": "24px",
+                    "sm": "12px",
+                    "container-max": "1280px",
+                    "base": "4px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .split-pane-h {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            height: calc(100vh - 72px); /* Adjust based on TopNavBar height */
+            overflow: hidden;
+        }
+        .atmospheric-bg {
+            background: radial-gradient(circle at top right, rgba(238, 242, 255, 0.8) 0%, transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(243, 244, 246, 0.6) 0%, transparent 40%);
+            background-color: var(--color-background);
+        }
+        .scrollable-pane {
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md h-full flex flex-col atmospheric-bg">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg py-md max-w-container-max mx-auto h-[72px]">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">Talvion</span>
+<div class="hidden md:flex gap-md ml-lg">
+<a class="text-secondary hover:text-primary transition-colors hover:bg-surface-container-low px-sm py-xs rounded-DEFAULT" href="#">Matches</a>
+<a class="text-primary border-b-2 border-primary pb-1 cursor-pointer transition-all duration-200 active:opacity-80 px-sm py-xs" href="#">Saved</a>
+<a class="text-secondary hover:text-primary transition-colors hover:bg-surface-container-low px-sm py-xs rounded-DEFAULT" href="#">Applications</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<!-- search_bar: "on_right" logic implies search might be here, keeping it simple based on layout -->
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md px-md py-xs rounded-lg hover:bg-surface-container-low transition-colors">Sign In</button>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-md py-xs rounded-lg hover:opacity-90 transition-opacity">Get Started</button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small, professional headshot avatar of a user in a minimalist light-mode interface. The avatar shows a person with a neutral, professional expression, photographed against a clean white background. The image is cropped to a circle, perfectly fitting a modern SaaS dashboard aesthetic. The lighting is even and bright, conveying reliability and high quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6bx03twRkq--DWy1ojrmdWY3oYA-MAngPEcDgR1-zKQpVJfYY82_FbJXYERGdc94REBJX1AqT1Lm6rj5LaGbjupgDeVICCZiw0BPcNQqAPzUxJCBoDHI3J5gI5qLSr_phKYfjTiOOK-I0lkJVvxJ8ylTk2-hHU84qUbwR5PRZkZ2w1DU7ckdBlyn2pbFDGB97oNTyF0DEF7Yn8EvNl3mRu9wMbPMaGLYtskTSvAHcj20rlOpz2JmmnQ">
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="mt-[72px] split-pane-h max-w-container-max mx-auto w-full">
+<!-- Left Pane: Saved Jobs List -->
+<aside class="scrollable-pane border-r border-outline-variant bg-surface-container-lowest p-md flex flex-col gap-md">
+<!-- Controls (Toggle & Sort) -->
+<div class="flex flex-col gap-sm pb-sm border-b border-outline-variant sticky top-0 bg-surface-container-lowest z-10 pt-xs">
+<h1 class="font-headline-md text-headline-md text-on-surface">Saved Opportunities</h1>
+<div class="flex items-center justify-between mt-xs">
+<!-- Segmented Control -->
+<div class="bg-surface-container-low p-base rounded-lg inline-flex">
+<button class="bg-surface-container-lowest shadow-sm px-sm py-xs rounded-DEFAULT font-label-md text-label-md text-on-surface">Saved</button>
+<button class="px-sm py-xs rounded-DEFAULT font-label-md text-label-md text-secondary hover:text-on-surface transition-colors">Archived</button>
+</div>
+<!-- Sort -->
+<button class="flex items-center gap-base text-secondary hover:text-on-surface transition-colors">
+<span class="font-label-md text-label-md">Sort by</span>
+<span class="material-symbols-outlined text-[18px]">sort</span>
+</button>
+</div>
+</div>
+<!-- Job Cards List -->
+<div class="flex flex-col gap-sm">
+<!-- Active Card -->
+<div class="p-md bg-surface-container-lowest border-2 border-primary rounded-lg cursor-pointer hover:shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.05)] transition-all">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-label-md text-[18px] font-semibold text-on-surface">Senior Product Designer</h3>
+<p class="font-body-sm text-body-sm text-secondary">Acme Corp • Remote</p>
+</div>
+<div class="bg-surface-container-low text-primary font-label-sm text-label-sm px-sm py-base rounded-full flex items-center gap-base">
+<span class="material-symbols-outlined text-[14px]">psychiatry</span> 98%
+                        </div>
+</div>
+<div class="flex gap-base mt-md">
+<span class="bg-[#EEF2FF] text-primary font-label-sm text-label-sm px-sm py-base rounded-full">UX/UI</span>
+<span class="bg-[#EEF2FF] text-primary font-label-sm text-label-sm px-sm py-base rounded-full">Figma</span>
+</div>
+</div>
+<!-- Inactive Card 1 -->
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer hover:shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.05)] transition-all">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-label-md text-[18px] font-semibold text-on-surface">Lead Frontend Engineer</h3>
+<p class="font-body-sm text-body-sm text-secondary">Globex • Hybrid (NY)</p>
+</div>
+<div class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-sm py-base rounded-full flex items-center gap-base">
+<span class="material-symbols-outlined text-[14px]">psychiatry</span> 92%
+                        </div>
+</div>
+<div class="flex gap-base mt-md">
+<span class="bg-surface-container-low text-secondary font-label-sm text-label-sm px-sm py-base rounded-full">React</span>
+<span class="bg-surface-container-low text-secondary font-label-sm text-label-sm px-sm py-base rounded-full">TypeScript</span>
+</div>
+</div>
+<!-- Inactive Card 2 -->
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer hover:shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.05)] transition-all opacity-75">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-label-md text-[18px] font-semibold text-on-surface">Design Systems Lead</h3>
+<p class="font-body-sm text-body-sm text-secondary">Initech • Remote</p>
+</div>
+<div class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-sm py-base rounded-full flex items-center gap-base">
+<span class="material-symbols-outlined text-[14px]">psychiatry</span> 88%
+                        </div>
+</div>
+<div class="flex gap-base mt-md">
+<span class="bg-surface-container-low text-secondary font-label-sm text-label-sm px-sm py-base rounded-full">Tokens</span>
+<span class="bg-surface-container-low text-secondary font-label-sm text-label-sm px-sm py-base rounded-full">Accessibility</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Pane: Job Details -->
+<section class="scrollable-pane bg-background p-lg lg:p-xl relative">
+<div class="max-w-[800px] mx-auto bg-surface-container-lowest border border-outline-variant rounded-xl p-lg lg:p-xl shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+<!-- Header -->
+<div class="flex justify-between items-start border-b border-outline-variant pb-md mb-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<img alt="Company Logo" class="w-12 h-12 rounded-lg border border-outline-variant object-contain p-base" data-alt="A clean, minimalist logo for a tech company named Acme Corp. The logo is a simple geometric shape, perhaps a stylized 'A', rendered in a deep, professional blue on a pure white background. It sits perfectly within a square frame, representing stability and corporate professionalism in a modern SaaS context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVqVIrILeFaWP_Lr4RsIzTtooLbdDjjNlnOa4Ve9l6Pj8ZJFjYOWOIe13k70yuSiYgGUYUYl9VhLPMuf0kmpYiaslPCnOH4ECddd94fVa8_k22A8abvLuxjpkqLdaKL1IRU0rg_0phBqEN3KoWfqv2YqN5nrv_Uah3MDy8O4eYi3wRSiaOPXNzNfmwJQZUtcg0vSv-2uP-kh2lJ--2Xb9ZlWzJisCrO5VfQ2qmQIxUauNc3F9J943vLA">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Senior Product Designer</h1>
+<p class="font-body-md text-body-md text-secondary mt-base">Acme Corp • Remote • Full-time</p>
+</div>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="bg-surface-container-low border border-outline-variant text-on-surface font-label-md text-label-md px-md py-xs rounded-lg hover:bg-surface-container-high transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">bookmark_added</span> Saved
+                        </button>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-md py-xs rounded-lg hover:opacity-90 transition-opacity">
+                            Apply Now
+                        </button>
+</div>
+</div>
+<!-- Match Score Insight Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<div class="col-span-1 md:col-span-2 bg-[#EEF2FF] rounded-lg p-md border border-[#c3c0ff]">
+<h4 class="font-label-md text-label-md text-primary flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-[18px]">psychiatry</span> 98% Match Insight
+                        </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your extensive experience with scalable design systems and cross-functional leadership strongly aligns with Acme Corp's immediate needs for their Q3 product overhaul.</p>
+</div>
+<div class="col-span-1 bg-surface-container-low rounded-lg p-md border border-outline-variant flex flex-col justify-center items-center text-center">
+<span class="font-headline-md text-headline-md text-on-surface">$140k - $180k</span>
+<span class="font-label-sm text-label-sm text-secondary mt-base">Base Salary + Equity</span>
+</div>
+</div>
+<!-- Content -->
+<div class="space-y-lg text-on-surface">
+<section>
+<h2 class="font-headline-md text-headline-md mb-sm">About the Role</h2>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+                            We are looking for a Senior Product Designer to lead the experience design for our core platform. You will work closely with product managers and engineers to distill complex workflows into intuitive, beautiful interfaces that our high-output users love.
+                        </p>
+</section>
+<section>
+<h2 class="font-headline-md text-headline-md mb-sm">Key Responsibilities</h2>
+<ul class="list-disc pl-lg font-body-md text-body-md text-secondary space-y-xs">
+<li class="">Lead end-to-end design for major product initiatives.</li>
+<li class="">Evolve and maintain our overarching design system.</li>
+<li class="">Collaborate tightly with engineering to ensure high-quality implementation.</li>
+<li class="">Mentor junior designers and foster a culture of design excellence.</li>
+</ul>
+</section>
+<section>
+<h2 class="font-headline-md text-headline-md mb-sm">Required Skills</h2>
+<div class="flex flex-wrap gap-sm">
+<span class="bg-surface-container-low border border-outline-variant text-on-surface font-label-md text-label-md px-sm py-xs rounded-DEFAULT">Figma</span>
+<span class="bg-surface-container-low border border-outline-variant text-on-surface font-label-md text-label-md px-sm py-xs rounded-DEFAULT">Design Systems</span>
+<span class="bg-surface-container-low border border-outline-variant text-on-surface font-label-md text-label-md px-sm py-xs rounded-DEFAULT">Prototyping</span>
+<span class="bg-surface-container-low border border-outline-variant text-on-surface font-label-md text-label-md px-sm py-xs rounded-DEFAULT">User Research</span>
+<span class="bg-surface-container-low border border-outline-variant text-on-surface font-label-md text-label-md px-sm py-xs rounded-DEFAULT">SaaS Experience</span>
+</div>
+</section>
+</div>
+</div>
+</section>
+</main>
+
+
+</body></html>

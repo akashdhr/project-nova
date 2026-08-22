@@ -1,0 +1,323 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Complete your profile - Talvion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#351000",
+                    "tertiary-container": "#a44100",
+                    "surface-container-low": "#f3f4f5",
+                    "secondary-fixed-dim": "#c0c6db",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-tertiary-container": "#ffd2be",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-container": "#dad7ff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-container": "#edeeef",
+                    "primary": "#3525cd",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-fixed": "#dce2f7",
+                    "on-surface-variant": "#464555",
+                    "background": "#f8f9fa",
+                    "secondary-container": "#d9dff5",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed": "#141b2b",
+                    "on-background": "#191c1d",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "outline-variant": "#c7c4d8",
+                    "primary-container": "#4f46e5",
+                    "on-secondary-fixed-variant": "#404758",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#4d44e3",
+                    "outline": "#777587",
+                    "on-primary-fixed": "#0f0069",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d9dadb",
+                    "tertiary-fixed": "#ffdbcc",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "on-secondary-container": "#5c6274",
+                    "primary-fixed": "#e2dfff",
+                    "on-error": "#ffffff",
+                    "secondary": "#575e70",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "error": "#ba1a1a",
+                    "tertiary": "#7e3000",
+                    "inverse-primary": "#c3c0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "letterSpacing": "0em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "30px",
+                            {
+                                    "lineHeight": "38px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: theme('spacing.lg');
+        }
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md antialiased bg-gradient-to-br from-surface to-surface-container-low">
+<!-- Suppressed TopNav as this is a linear/transactional onboarding screen -->
+<main class="flex-grow flex items-center justify-center py-xl px-lg md:px-xl">
+<div class="w-full max-w-4xl mx-auto">
+<header class="mb-xl text-center md:text-left">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Complete your profile</h1>
+<p class="font-body-md text-body-md text-secondary">Tell us what you're looking for. We'll use your resume to fill in the rest.</p>
+</header>
+<form class="space-y-lg">
+<div class="bento-grid gap-xl">
+<!-- 1. Resume -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-xs text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<h2 class="">Resume</h2>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant rounded-lg p-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Abhishek_Ranjan.pdf</p>
+<p class="font-label-sm text-label-sm text-secondary">Uploaded successfully</p>
+</div>
+</div>
+<button class="text-secondary hover:text-error transition-colors" type="button">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<button class="mt-auto flex items-center justify-center gap-xs font-label-md text-label-md text-primary bg-primary-container/10 hover:bg-primary-container/20 rounded-lg py-xs px-md transition-colors border border-primary-container/30 border-dashed" type="button">
+<span class="material-symbols-outlined">upload</span>
+                             Upload New Resume
+                        </button>
+</div>
+<!-- 2. Target Job -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-xs text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work</span>
+<h2 class="">Target Job</h2>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Roles</label>
+<div class="border border-outline-variant rounded-lg p-sm focus-within:border-primary-container transition-colors bg-surface-container-lowest">
+<div class="flex flex-wrap gap-xs mb-xs">
+<span class="inline-flex items-center gap-base px-sm py-base rounded-full bg-primary-container/10 text-primary-container font-label-sm text-label-sm">
+                                        Product Manager
+                                        <button class="hover:text-primary" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+<input class="w-full border-none p-0 focus:ring-0 text-body-sm font-body-sm bg-transparent outline-none" placeholder="Search roles..." type="text">
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Industries</label>
+<div class="border border-outline-variant rounded-lg p-sm focus-within:border-primary-container transition-colors bg-surface-container-lowest">
+<div class="flex flex-wrap gap-xs mb-xs">
+<span class="inline-flex items-center gap-base px-sm py-base rounded-full bg-primary-container/10 text-primary-container font-label-sm text-label-sm">
+                                        SaaS
+                                        <button class="hover:text-primary" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+<input class="w-full border-none p-0 focus:ring-0 text-body-sm font-body-sm bg-transparent outline-none" placeholder="Search industries..." type="text">
+</div>
+</div>
+</div>
+<!-- 3. Work Preferences -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-xs text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">tune</span>
+<h2 class="">Work Preferences</h2>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Work Mode</label>
+<div class="flex bg-surface-container-low p-base rounded-lg border border-outline-variant">
+<button class="flex-1 py-xs text-center rounded-md bg-surface-container-lowest shadow-sm font-label-sm text-label-sm text-on-surface border border-outline-variant" type="button">Remote</button>
+<button class="flex-1 py-xs text-center rounded-md font-label-sm text-label-sm text-secondary hover:text-on-surface transition-colors" type="button">Hybrid</button>
+<button class="flex-1 py-xs text-center rounded-md font-label-sm text-label-sm text-secondary hover:text-on-surface transition-colors" type="button">On-site</button>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Locations</label>
+<div class="border border-outline-variant rounded-lg p-sm focus-within:border-primary-container transition-colors bg-surface-container-lowest">
+<div class="flex flex-wrap gap-xs mb-xs">
+<span class="inline-flex items-center gap-base px-sm py-base rounded-full bg-primary-container/10 text-primary-container font-label-sm text-label-sm">
+                                        San Francisco
+                                        <button class="hover:text-primary" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+<input class="w-full border-none p-0 focus:ring-0 text-body-sm font-body-sm bg-transparent outline-none" placeholder="Add locations..." type="text">
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Compensation Range</label>
+<div class="flex items-center gap-sm">
+<div class="relative flex-1">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-secondary font-body-sm text-body-sm">$</span>
+<input class="w-full pl-xl pr-sm py-xs border border-outline-variant rounded-lg focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-body-sm text-body-sm bg-surface-container-lowest" placeholder="Min" type="number">
+</div>
+<span class="text-secondary">-</span>
+<div class="relative flex-1">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-secondary font-body-sm text-body-sm">$</span>
+<input class="w-full pl-xl pr-sm py-xs border border-outline-variant rounded-lg focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-body-sm text-body-sm bg-surface-container-lowest" placeholder="Max" type="number">
+</div>
+</div>
+</div>
+</div>
+<!-- 4. Priorities -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-xs text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<h2 class="">Priorities</h2>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Career Priorities</label>
+<div class="flex flex-wrap gap-xs">
+<button class="inline-flex items-center px-md py-xs rounded-full border border-primary-container bg-primary-container/10 text-primary-container font-label-sm text-label-sm hover:bg-primary-container/20 transition-colors" type="button">Growth</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-primary-container bg-primary-container/10 text-primary-container font-label-sm text-label-sm hover:bg-primary-container/20 transition-colors" type="button">Leadership</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-outline-variant bg-surface-container-lowest text-secondary font-label-sm text-label-sm hover:bg-surface-container-low transition-colors" type="button">Work-Life Balance</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-outline-variant bg-surface-container-lowest text-secondary font-label-sm text-label-sm hover:bg-surface-container-low transition-colors" type="button">Mentorship</button>
+</div>
+</div>
+<div class="space-y-sm mt-auto">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Deal Breakers</label>
+<div class="flex flex-wrap gap-xs">
+<button class="inline-flex items-center px-md py-xs rounded-full border border-error bg-error/10 text-error font-label-sm text-label-sm hover:bg-error/20 transition-colors" type="button">Relocation</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-outline-variant bg-surface-container-lowest text-secondary font-label-sm text-label-sm hover:bg-surface-container-low transition-colors" type="button">Travel</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-outline-variant bg-surface-container-lowest text-secondary font-label-sm text-label-sm hover:bg-surface-container-low transition-colors" type="button">Startups</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-lg">
+<button class="inline-flex items-center gap-sm bg-primary-container text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity focus:ring-2 focus:ring-offset-2 focus:ring-primary-container" type="submit">
+                        Find My Matches
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+<!-- Suppressed Footer for focused onboarding flow -->
+
+
+</body></html>

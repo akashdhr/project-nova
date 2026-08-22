@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Complete your profile - Talvion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-highest": "#2d3449",
+                "on-background": "#dae2fd",
+                "tertiary-fixed": "#d8e3fb",
+                "primary": "#c0c1ff",
+                "accent-violet": "#a855f7",
+                "on-tertiary-fixed-variant": "#3c475a",
+                "on-tertiary-fixed": "#111c2d",
+                "tertiary-container": "#8691a7",
+                "inverse-primary": "#494bd6",
+                "error": "#ffb4ab",
+                "text-primary": "#f8fafc",
+                "outline": "#908fa0",
+                "on-error-container": "#ffdad6",
+                "background": "#0b1326",
+                "on-secondary": "#490080",
+                "on-error": "#690005",
+                "secondary-fixed": "#f0dbff",
+                "text-secondary": "#94a3b8",
+                "error-container": "#93000a",
+                "surface-container": "#171f33",
+                "border-subtle": "#334155",
+                "surface-navy": "#0f172a",
+                "surface-variant": "#2d3449",
+                "on-tertiary": "#263143",
+                "on-primary-container": "#0d0096",
+                "on-primary": "#1000a9",
+                "surface": "#0b1326",
+                "surface-dim": "#0b1326",
+                "on-secondary-fixed-variant": "#6900b3",
+                "surface-charcoal": "#1e293b",
+                "primary-container": "#8083ff",
+                "surface-container-low": "#131b2e",
+                "surface-container-high": "#222a3d",
+                "tertiary-fixed-dim": "#bcc7de",
+                "secondary": "#ddb7ff",
+                "on-secondary-fixed": "#2c0051",
+                "inverse-on-surface": "#283044",
+                "accent-indigo": "#6366f1",
+                "outline-variant": "#464554",
+                "tertiary": "#bcc7de",
+                "secondary-fixed-dim": "#ddb7ff",
+                "primary-fixed": "#e1e0ff",
+                "on-primary-fixed-variant": "#2f2ebe",
+                "on-secondary-container": "#d6a9ff",
+                "on-tertiary-container": "#1f2a3c",
+                "surface-container-lowest": "#060e20",
+                "on-surface": "#dae2fd",
+                "on-surface-variant": "#c7c4d7",
+                "surface-bright": "#31394d",
+                "primary-fixed-dim": "#c0c1ff",
+                "surface-tint": "#c0c1ff",
+                "inverse-surface": "#dae2fd",
+                "secondary-container": "#6f00be",
+                "on-primary-fixed": "#07006c"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "container-max": "1280px",
+                "base": "4px",
+                "lg": "24px",
+                "md": "16px",
+                "xl": "32px",
+                "sm": "12px",
+                "gutter": "24px",
+                "xs": "8px"
+        },
+        "fontFamily": {
+                "headline-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "body-sm": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "letterSpacing": "0em",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "30px",
+                        {
+                                "lineHeight": "38px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0em",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: theme('spacing.lg');
+        }
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md antialiased bg-gradient-to-br from-surface to-surface-container-high">
+<!-- Suppressed TopNav as this is a linear/transactional onboarding screen -->
+<main class="flex-grow flex items-center justify-center py-xl px-lg md:px-xl">
+<div class="w-full max-w-4xl mx-auto">
+<header class="mb-xl text-center md:text-left">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Complete your profile</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Tell us what you're looking for. We'll use your resume to fill in the rest.</p>
+</header>
+<form class="space-y-lg">
+<div class="bento-grid gap-xl">
+<!-- 1. Resume -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-xs text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<h2 class="">Resume</h2>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant rounded-lg p-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Abhishek_Ranjan.pdf</p>
+<p class="font-label-sm text-label-sm text-secondary">Uploaded successfully</p>
+</div>
+</div>
+<button class="text-secondary hover:text-error transition-colors" type="button">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<button class="mt-auto flex items-center justify-center gap-xs font-label-md text-label-md text-primary bg-primary-container/10 hover:bg-primary-container/20 rounded-lg py-xs px-md transition-colors border border-primary-container/30 border-dashed" type="button">
+<span class="material-symbols-outlined">upload</span>
+                             Upload New Resume
+                        </button>
+</div>
+<!-- 2. Target Job -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-xs text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work</span>
+<h2 class="">Target Job</h2>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Roles</label>
+<div class="border border-outline-variant rounded-lg p-sm focus-within:border-primary-container transition-colors bg-surface-container-low">
+<div class="flex flex-wrap gap-xs mb-xs">
+<span class="inline-flex items-center gap-base px-sm py-base rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm border border-primary-container/30">
+                                        Product Manager
+                                        <button class="hover:text-primary-container transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+<input class="w-full border-none p-0 focus:ring-0 text-body-sm font-body-sm bg-transparent outline-none text-on-surface placeholder:text-outline" placeholder="Search roles..." type="text"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Industries</label>
+<div class="border border-outline-variant rounded-lg p-sm focus-within:border-primary-container transition-colors bg-surface-container-low">
+<div class="flex flex-wrap gap-xs mb-xs">
+<span class="inline-flex items-center gap-base px-sm py-base rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm border border-primary-container/30">
+                                        SaaS
+                                        <button class="hover:text-primary-container transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+<input class="w-full border-none p-0 focus:ring-0 text-body-sm font-body-sm bg-transparent outline-none text-on-surface placeholder:text-outline" placeholder="Search industries..." type="text"/>
+</div>
+</div>
+</div>
+<!-- 3. Work Preferences -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-xs text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">tune</span>
+<h2 class="">Work Preferences</h2>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Work Mode</label>
+<div class="flex bg-surface-container-low p-base rounded-lg border border-outline-variant">
+<button class="flex-1 py-xs text-center rounded-md bg-surface-container-highest shadow-sm font-label-sm text-label-sm text-on-surface border border-outline-variant" type="button">Remote</button>
+<button class="flex-1 py-xs text-center rounded-md font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest/50 transition-colors" type="button">Hybrid</button>
+<button class="flex-1 py-xs text-center rounded-md font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest/50 transition-colors" type="button">On-site</button>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Locations</label>
+<div class="border border-outline-variant rounded-lg p-sm focus-within:border-primary-container transition-colors bg-surface-container-low">
+<div class="flex flex-wrap gap-xs mb-xs">
+<span class="inline-flex items-center gap-base px-sm py-base rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm border border-primary-container/30">
+                                        San Francisco
+                                        <button class="hover:text-primary-container transition-colors" type="button"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+<input class="w-full border-none p-0 focus:ring-0 text-body-sm font-body-sm bg-transparent outline-none text-on-surface placeholder:text-outline" placeholder="Add locations..." type="text"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Compensation Range</label>
+<div class="flex items-center gap-sm">
+<div class="relative flex-1">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-outline font-body-sm text-body-sm">$</span>
+<input class="w-full pl-xl pr-sm py-xs border border-outline-variant rounded-lg focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-body-sm text-body-sm bg-surface-container-low text-on-surface placeholder:text-outline" placeholder="Min" type="number"/>
+</div>
+<span class="text-on-surface-variant">-</span>
+<div class="relative flex-1">
+<span class="absolute left-sm top-1/2 -translate-y-1/2 text-outline font-body-sm text-body-sm">$</span>
+<input class="w-full pl-xl pr-sm py-xs border border-outline-variant rounded-lg focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none font-body-sm text-body-sm bg-surface-container-low text-on-surface placeholder:text-outline" placeholder="Max" type="number"/>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. Priorities -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-xs text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<h2 class="">Priorities</h2>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Career Priorities</label>
+<div class="flex flex-wrap gap-xs">
+<button class="inline-flex items-center px-md py-xs rounded-full border border-primary-container bg-primary-container/20 text-primary font-label-sm text-label-sm hover:bg-primary-container/30 transition-colors" type="button">Growth</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-primary-container bg-primary-container/20 text-primary font-label-sm text-label-sm hover:bg-primary-container/30 transition-colors" type="button">Leadership</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-outline-variant bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors" type="button">Work-Life Balance</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-outline-variant bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors" type="button">Mentorship</button>
+</div>
+</div>
+<div class="space-y-sm mt-auto">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">Deal Breakers</label>
+<div class="flex flex-wrap gap-xs">
+<button class="inline-flex items-center px-md py-xs rounded-full border border-error bg-error/10 text-error font-label-sm text-label-sm hover:bg-error/20 transition-colors" type="button">Relocation</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-outline-variant bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors" type="button">Travel</button>
+<button class="inline-flex items-center px-md py-xs rounded-full border border-outline-variant bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors" type="button">Startups</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-lg">
+<button class="inline-flex items-center gap-sm bg-primary-container text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-primary-container/90 transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-primary-container focus:ring-offset-surface" type="submit">
+                        Find My Matches
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+<!-- Suppressed Footer for focused onboarding flow -->
+</body></html>

@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #4F46E5;
+  --color-surface: #F9FAFB;
+  --color-surface-card: #FFFFFF;
+  --color-content-primary: #111827;
+  --color-content-secondary: #4B5563;
+  --color-stroke: #E5E7EB;
+
+  --color-dark-surface: #121212;
+  --color-dark-surface-card: #1E1E1E;
+  --color-dark-content-primary: #F9FAFB;
+  --color-dark-content-secondary: #D1D5DB;
+  --color-dark-stroke: #374151;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg-color: var(--color-surface);
+    --card-bg: var(--color-surface-card);
+    --text-primary: var(--color-content-primary);
+    --text-secondary: var(--color-content-secondary);
+    --border-color: var(--color-stroke);
+  }
+  
+  .dark {
+    --bg-color: var(--color-dark-surface);
+    --card-bg: var(--color-dark-surface-card);
+    --text-primary: var(--color-dark-content-primary);
+    --text-secondary: var(--color-dark-content-secondary);
+    --border-color: var(--color-dark-stroke);
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+  }
+}
+
+@theme {
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-float-delayed: float-delayed 5s ease-in-out infinite 1s;
+  --animate-float-slow: float-slow 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.02); }
+  }
+  @keyframes float-delayed {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.03); }
+  }
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.01); }
+  }
+}

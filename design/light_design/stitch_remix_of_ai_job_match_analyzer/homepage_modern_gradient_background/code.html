@@ -1,0 +1,264 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Talvion: Floating Insights</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "keyframes": {
+                        "float": {
+                            "0%, 100%": { transform: "translateY(0) scale(1)" },
+                            "50%": { transform: "translateY(-10px) scale(1.02)" }
+                        },
+                        "float-delayed": {
+                            "0%, 100%": { transform: "translateY(0) scale(1)" },
+                            "50%": { transform: "translateY(-12px) scale(1.03)" }
+                        },
+                        "float-slow": {
+                            "0%, 100%": { transform: "translateY(0) scale(1)" },
+                            "50%": { transform: "translateY(-8px) scale(1.01)" }
+                        }
+                    },
+                    "animation": {
+                        "float": "float 4s ease-in-out infinite",
+                        "float-delayed": "float-delayed 5s ease-in-out infinite 1s",
+                        "float-slow": "float-slow 6s ease-in-out infinite"
+                    },
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#351000",
+                        "tertiary-container": "#a44100",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-tertiary-container": "#ffd2be",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-primary-container": "#dad7ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-container": "#edeeef",
+                        "primary": "#3525cd",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed": "#dce2f7",
+                        "on-surface-variant": "#464555",
+                        "background": "#f8f9fa",
+                        "secondary-container": "#d9dff5",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-variant": "#e1e3e4",
+                        "surface": "#f8f9fa",
+                        "on-secondary-fixed": "#141b2b",
+                        "on-background": "#191c1d",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "outline-variant": "#c7c4d8",
+                        "primary-container": "#4f46e5",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "outline": "#777587",
+                        "on-primary-fixed": "#0f0069",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d9dadb",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-secondary-container": "#5c6274",
+                        "primary-fixed": "#e2dfff",
+                        "on-error": "#ffffff",
+                        "secondary": "#575e70",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "error": "#ba1a1a",
+                        "tertiary": "#7e3000",
+                        "inverse-primary": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-surface-container-low via-surface to-surface-container-lowest text-on-background font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest/80 backdrop-blur-md fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg py-md max-w-container-max mx-auto border-b border-outline-variant">
+<div class="flex items-center gap-xl">
+<span class="text-headline-md font-headline-md font-bold text-primary">Talvion</span>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-body-md text-body-md text-secondary hover:text-primary hover:bg-surface-container-low/50 transition-colors cursor-pointer transition-all duration-200 active:opacity-80 px-sm py-xs rounded" href="#">Matches</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary hover:bg-surface-container-low/50 transition-colors cursor-pointer transition-all duration-200 active:opacity-80 px-sm py-xs rounded" href="#">Saved</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary hover:bg-surface-container-low/50 transition-colors cursor-pointer transition-all duration-200 active:opacity-80 px-sm py-xs rounded" href="#">Applications</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="font-label-md text-label-md text-on-surface bg-surface-container-lowest border border-outline-variant px-md py-xs rounded hover:bg-surface-container-low transition-colors shadow-sm">Sign In</button>
+<button class="font-label-md text-label-md text-on-primary bg-primary-container px-md py-xs rounded hover:opacity-90 transition-opacity shadow-sm">Get Started</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px] w-full max-w-container-max mx-auto px-gutter">
+<!-- Hero Section -->
+<section class="flex flex-col items-center text-center mt-[80px] mb-xl max-w-3xl mx-auto">
+<h1 class="font-headline-lg text-headline-lg md:text-[48px] md:leading-[56px] text-on-surface tracking-tight mb-md drop-shadow-sm">
+                Find jobs that actually fit you.
+            </h1>
+<p class="font-body-md text-body-md text-secondary max-w-xl mb-xl">
+                Experience precision hiring with AI-driven matching that understands your exact skillset, preferred work style, and career trajectory. Stop searching, start matching.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-md w-full">
+<button class="w-full sm:w-auto font-label-md text-label-md text-on-primary bg-primary-container px-lg py-sm rounded-lg hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
+                    Find My Matches
+                </button>
+<button class="w-full sm:w-auto font-label-md text-label-md text-on-surface bg-surface-container-lowest border border-outline-variant px-lg py-sm rounded-lg hover:bg-surface-container-low transition-colors shadow-sm hover:shadow-md">
+                    Sign In
+                </button>
+</div>
+</section>
+<!-- UI Preview - Restrained Job Match Card -->
+<section class="flex justify-center mb-[100px] px-sm">
+<div class="relative w-full max-w-md">
+<!-- Floating Insight Card 1 -->
+<div class="absolute -top-6 -left-12 md:-left-20 bg-white/70 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-xl px-sm py-xs z-10 animate-float flex items-center gap-xs hidden sm:flex">
+<span class="material-symbols-outlined text-primary-container text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface">Skill Match</span>
+</div>
+<!-- Floating Insight Card 2 -->
+<div class="absolute top-10 -right-8 md:-right-24 bg-white/70 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-xl px-sm py-xs z-10 animate-float-delayed flex items-center gap-xs hidden sm:flex">
+<span class="material-symbols-outlined text-[#16a34a] text-[18px]">payments</span>
+<span class="font-label-sm text-label-sm text-on-surface">Salary Fit</span>
+</div>
+<!-- Floating Insight Card 3 -->
+<div class="absolute -bottom-8 -left-6 md:-left-16 bg-white/70 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-xl px-sm py-xs z-10 animate-float-slow flex items-center gap-xs hidden sm:flex">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">flag</span>
+<span class="font-label-sm text-label-sm text-on-surface">Goal Alignment</span>
+</div>
+<!-- Floating Insight Card 4 -->
+<div class="absolute -bottom-4 -right-6 md:-right-16 bg-white/70 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-xl px-sm py-xs z-10 animate-float flex items-center gap-xs hidden sm:flex">
+<span class="material-symbols-outlined text-[#d97706] text-[18px]">groups</span>
+<span class="font-label-sm text-label-sm text-on-surface">Culture Fit</span>
+</div>
+<div class="bg-surface-container-lowest/90 backdrop-blur-sm border border-outline-variant/60 rounded-lg p-lg w-full max-w-md relative overflow-hidden group shadow-lg hover:shadow-xl transition-shadow">
+<!-- Subtle indicator dot -->
+<div class="absolute top-lg right-lg w-2 h-2 bg-primary-container rounded-full"></div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Senior Product Manager</h3>
+<p class="font-body-sm text-body-sm text-secondary">Acme Corp • San Francisco, CA (Hybrid)</p>
+</div>
+</div>
+<div class="flex items-center gap-sm mb-lg">
+<span class="bg-surface-container-low text-primary-container font-label-sm text-label-sm px-sm py-base rounded-full flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+                            92% Match
+                        </span>
+<span class="bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-sm text-label-sm px-sm py-base rounded-full">
+                            $160k - $190k
+                        </span>
+</div>
+<div class="bg-surface/80 border border-outline-variant/60 rounded p-sm border-l-2 border-l-primary-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-base flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary-container">info</span>
+                            Why this matches you:
+                        </p>
+<p class="font-body-sm text-body-sm text-secondary">
+                            Strong role alignment based on your 5+ years of B2B SaaS experience and demonstrated success leading cross-functional engineering pods.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-xl py-xl border-t border-outline-variant/60 mb-xl">
+<!-- Feature 1 -->
+<div class="flex flex-col gap-sm">
+<div class="w-10 h-10 rounded flex items-center justify-center bg-surface-container-lowest shadow-sm border border-outline-variant/30 text-primary-container mb-xs">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface">Better matches</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+                    Our semantic analysis looks beyond keywords to understand the true context of your experience and the nuances of the role.
+                </p>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col gap-sm">
+<div class="w-10 h-10 rounded flex items-center justify-center bg-surface-container-lowest shadow-sm border border-outline-variant/30 text-primary-container mb-xs">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface">Explainable recommendations</h4>
+<p class="font-body-sm text-body-sm text-secondary">
+                    Never wonder why you were matched. We provide clear, plain-text reasoning for every job recommendation placed in your feed.
+                </p>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col gap-sm">
+<div class="w-10 h-10 rounded flex items-center justify-center bg-surface-container-lowest shadow-sm border border-outline-variant/30 text-primary-container mb-xs">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface">Less time searching</h4>
+<p class="font-body-sm text-body-sm text-secondary">Eliminate the infinite scroll. Talvion delivers a curated shortlist of high-probability opportunities directly to you.</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-transparent w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md border-t border-outline-variant/60 mt-auto">
+<div class="font-headline-sm text-headline-sm font-semibold text-on-surface">Talvion</div>
+<div class="font-label-sm text-label-sm text-secondary">© 2024 Talvion. AI-Powered Precision.</div>
+<div class="flex gap-md">
+<a class="font-label-sm text-label-sm text-on-secondary-container hover:text-primary transition-colors opacity-100 hover:opacity-80" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-on-secondary-container hover:text-primary transition-colors opacity-100 hover:opacity-80" href="#">Terms</a>
+<a class="font-label-sm text-label-sm text-on-secondary-container hover:text-primary transition-colors opacity-100 hover:opacity-80" href="#">Contact</a>
+</div>
+</footer>
+
+
+</body></html>

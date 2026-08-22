@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  passwordHash String
+  role         String        @default("user")
+  createdAt    DateTime      @default(now())
+  profile      Profile?
+  matches      Match[]
+  savedJobs    SavedJob[]
+  applications Application[]
+}
+
+model Profile {
+  id               String   @id @default(uuid())
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id])
+  firstName        String?
+  lastName         String?
+  targetRoles      String[]
+  industries       String[]
+  locations        String[]
+  workMode         String   @default("any")
+  compensation     String?
+  careerPriorities String[]
+  dealBreakers     String[]
+  resumeUrl        String?
+}
+
+model Job {
+  id             String        @id @default(uuid())
+  title          String
+  company        String
+  location       String
+  workMode       String
+  employmentType String
+  salary         String?
+  description    String
+  requiredSkills String[]
+  applicationUrl String?
+  createdAt      DateTime      @default(now())
+  matches        Match[]
+  savedBy        SavedJob[]
+  applications   Application[]
+}
+
+model Match {
+  id      String   @id @default(uuid())
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  jobId   String
+  job     Job      @relation(fields: [jobId], references: [id])
+  score   Float
+  reasons String[]
+  gaps    String[]
+
+  @@unique([userId, jobId])
+}
+
+model SavedJob {
+  id      String   @id @default(uuid())
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  jobId   String
+  job     Job      @relation(fields: [jobId], references: [id])
+  savedAt DateTime @default(now())
+
+  @@unique([userId, jobId])
+}
+
+model Application {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  jobId     String
+  job       Job      @relation(fields: [jobId], references: [id])
+  status    String   @default("Applied")
+  appliedAt DateTime @default(now())
+
+  @@unique([userId, jobId])
+}

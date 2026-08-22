@@ -1,0 +1,356 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Profile &amp; Preferences - Talvion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#351000",
+                    "tertiary-container": "#a44100",
+                    "surface-container-low": "#f3f4f5",
+                    "secondary-fixed-dim": "#c0c6db",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-tertiary-container": "#ffd2be",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-container": "#dad7ff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-container": "#edeeef",
+                    "primary": "#3525cd",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-fixed": "#dce2f7",
+                    "on-surface-variant": "#464555",
+                    "background": "#f8f9fa",
+                    "secondary-container": "#d9dff5",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed": "#141b2b",
+                    "on-background": "#191c1d",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "outline-variant": "#c7c4d8",
+                    "primary-container": "#4f46e5",
+                    "on-secondary-fixed-variant": "#404758",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#4d44e3",
+                    "outline": "#777587",
+                    "on-primary-fixed": "#0f0069",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d9dadb",
+                    "tertiary-fixed": "#ffdbcc",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "on-secondary-container": "#5c6274",
+                    "primary-fixed": "#e2dfff",
+                    "on-error": "#ffffff",
+                    "secondary": "#575e70",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "error": "#ba1a1a",
+                    "tertiary": "#7e3000",
+                    "inverse-primary": "#c3c0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<span class="font-headline-md text-headline-md font-bold text-primary">Talvion</span>
+<nav class="hidden md:flex gap-lg">
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors" href="#">Matches</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors" href="#">Saved</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors" href="#">Applications</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="font-label-md text-label-md text-on-surface bg-surface-container-low border border-outline-variant px-md py-xs rounded-lg hover:bg-surface-container transition-colors">Sign In</button>
+<button class="font-label-md text-label-md text-on-primary bg-primary px-md py-xs rounded-lg hover:opacity-90 transition-opacity">Get Started</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-xl px-lg max-w-container-max mx-auto w-full md:px-gutter">
+<!-- Page Header -->
+<div class="mb-xl md:mb-12">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-background mb-xs">Profile &amp; Preferences</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Manage your professional details and career criteria to ensure Talvion matches you with optimal opportunities.</p>
+</div>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-xl">
+<!-- Left Column: Navigation/Summary -->
+<div class="md:col-span-4 lg:col-span-3">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md sticky top-32">
+<div class="flex items-center gap-md mb-lg pb-md border-b border-outline-variant">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a person looking directly at the camera with a neutral, confident expression. The lighting is soft and studio quality, casting gentle shadows that define the facial features. The background is a clean, minimal white or light grey. The person is wearing modern, smart-casual business attire suitable for a high-tech or modern SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASxkoQ_f7VCN7ZKfkkGswBvWd1GGtVB8DaN3dbHq-BTaBIWp4tvPUIf0DfUrD2_pYV1JcDXE6j-1DBQhROZ9boUdRMZkz2ncIs_RQH9a4O9V1OE9Zh0w59SRIUiFnmV2WbvbvZ3hCSvlbedTpuhWTHVS1q9SAYDov9P3WKH7NgXKj5nlmEM4cptiYBojOIUwnvW6usRVvL-HiO1L9Lz0-73vJf1bj5oUFivN04XtjuDQat25t4cUn1Eg">
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Alex Mercer</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Senior Product Designer</p>
+</div>
+</div>
+<nav class="flex flex-col gap-sm">
+<a class="font-label-md text-label-md flex justify-between items-center text-primary bg-primary-fixed/20 px-sm py-xs rounded-md" href="#resume">
+                            Resume &amp; Skills
+                            <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+<a class="font-label-md text-label-md flex justify-between items-center text-on-surface-variant hover:bg-surface-container-low px-sm py-xs rounded-md transition-colors" href="#roles">
+                            Target Roles
+                        </a>
+<a class="font-label-md text-label-md flex justify-between items-center text-on-surface-variant hover:bg-surface-container-low px-sm py-xs rounded-md transition-colors" href="#industries">
+                            Industries &amp; Companies
+                        </a>
+<a class="font-label-md text-label-md flex justify-between items-center text-on-surface-variant hover:bg-surface-container-low px-sm py-xs rounded-md transition-colors" href="#logistics">
+                            Locations &amp; Mode
+                        </a>
+<a class="font-label-md text-label-md flex justify-between items-center text-on-surface-variant hover:bg-surface-container-low px-sm py-xs rounded-md transition-colors" href="#compensation">
+                            Compensation
+                        </a>
+<a class="font-label-md text-label-md flex justify-between items-center text-on-surface-variant hover:bg-surface-container-low px-sm py-xs rounded-md transition-colors" href="#preferences">
+                            Priorities &amp; Deal Breakers
+                        </a>
+</nav>
+</div>
+</div>
+<!-- Right Column: Sections -->
+<div class="md:col-span-8 lg:col-span-9 space-y-lg">
+<!-- Resume Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] transition-shadow group" id="resume">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Resume &amp; Core Details</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your foundational professional profile.</p>
+</div>
+<button class="text-primary hover:text-primary-container p-xs rounded-md hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="font-label-md text-label-md hidden sm:inline">Edit</span>
+</button>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-sm bg-surface-container-low p-sm rounded-md border border-outline-variant">
+<span class="material-symbols-outlined text-secondary">description</span>
+<div class="flex-grow">
+<p class="font-label-md text-label-md text-on-surface">Alex_Mercer_Resume_2024.pdf</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Last updated: Oct 12, 2024</p>
+</div>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-on-surface">download</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs tracking-wider">Top Skills</p>
+<div class="flex flex-wrap gap-xs">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm">Product Design</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm">UX Strategy</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm">Figma</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm">Design Systems</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm">User Research</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Target Roles Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] transition-shadow group" id="roles">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Target Roles</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Positions you are actively seeking.</p>
+</div>
+<button class="text-primary hover:text-primary-container p-xs rounded-md hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="font-label-md text-label-md hidden sm:inline">Edit</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="border-l-2 border-primary pl-sm">
+<p class="font-label-md text-label-md text-on-surface">Senior Product Designer</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Individual Contributor</p>
+</div>
+<div class="border-l-2 border-outline-variant pl-sm">
+<p class="font-label-md text-label-md text-on-surface">Lead Product Designer</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Management / Leadership</p>
+</div>
+<div class="border-l-2 border-outline-variant pl-sm">
+<p class="font-label-md text-label-md text-on-surface">UX Director</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Management / Leadership</p>
+</div>
+</div>
+</section>
+<!-- Logistics Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] transition-shadow group" id="logistics">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Locations &amp; Work Mode</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Where and how you want to work.</p>
+</div>
+<button class="text-primary hover:text-primary-container p-xs rounded-md hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="font-label-md text-label-md hidden sm:inline">Edit</span>
+</button>
+</div>
+<div class="space-y-md">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs tracking-wider">Preferred Work Mode</p>
+<div class="bg-surface-container-low p-xs rounded-lg inline-flex">
+<span class="bg-surface-container-lowest shadow-sm rounded-md px-md py-xs font-label-md text-label-md text-on-surface border border-outline-variant/30">Remote</span>
+<span class="px-md py-xs font-label-md text-label-md text-on-surface-variant">Hybrid</span>
+<span class="px-md py-xs font-label-md text-label-md text-on-surface-variant">On-site</span>
+</div>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs tracking-wider">Target Locations</p>
+<div class="flex flex-wrap gap-xs">
+<span class="border border-outline-variant px-sm py-xs rounded-md font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+                                    San Francisco, CA
+                                </span>
+<span class="border border-outline-variant px-sm py-xs rounded-md font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+                                    New York, NY
+                                </span>
+<span class="border border-outline-variant px-sm py-xs rounded-md font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">public</span>
+                                    Anywhere (Remote)
+                                </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Compensation Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] transition-shadow group" id="compensation">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Compensation Expectations</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your financial requirements.</p>
+</div>
+<button class="text-primary hover:text-primary-container p-xs rounded-md hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="font-label-md text-label-md hidden sm:inline">Edit</span>
+</button>
+</div>
+<div class="flex flex-col sm:flex-row gap-xl">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs tracking-wider">Base Salary (USD)</p>
+<p class="font-headline-md text-headline-md text-on-surface">$160,000 - $190,000</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-xs tracking-wider">Equity Expectation</p>
+<p class="font-headline-md text-headline-md text-on-surface">Required</p>
+</div>
+</div>
+</section>
+<!-- Priorities & Deal Breakers -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] transition-shadow group" id="preferences">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Priorities &amp; Deal Breakers</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">What matters most in your next role.</p>
+</div>
+<button class="text-primary hover:text-primary-container p-xs rounded-md hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="font-label-md text-label-md hidden sm:inline">Edit</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-sm tracking-wider flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">star</span>
+                                Top Priorities
+                            </p>
+<ul class="space-y-sm">
+<li class="font-body-md text-body-md text-on-surface flex items-start gap-sm">
+<span class="material-symbols-outlined text-[20px] text-primary mt-[2px]">check_circle</span>
+                                    Strong design culture and executive buy-in.
+                                </li>
+<li class="font-body-md text-body-md text-on-surface flex items-start gap-sm">
+<span class="material-symbols-outlined text-[20px] text-primary mt-[2px]">check_circle</span>
+                                    Opportunities for mentorship and team building.
+                                </li>
+<li class="font-body-md text-body-md text-on-surface flex items-start gap-sm">
+<span class="material-symbols-outlined text-[20px] text-primary mt-[2px]">check_circle</span>
+                                    Flexible working hours.
+                                </li>
+</ul>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-sm tracking-wider flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-error">block</span>
+                                Deal Breakers
+                            </p>
+<ul class="space-y-sm">
+<li class="font-body-md text-body-md text-on-surface flex items-start gap-sm">
+<span class="material-symbols-outlined text-[20px] text-error mt-[2px]">cancel</span>
+                                    Mandatory 5-day return to office.
+                                </li>
+<li class="font-body-md text-body-md text-on-surface flex items-start gap-sm">
+<span class="material-symbols-outlined text-[20px] text-error mt-[2px]">cancel</span>
+                                    Legacy tech stacks or resistance to modern tools.
+                                </li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md border-t border-outline-variant bg-surface mt-auto">
+<div class="font-headline-sm text-headline-sm font-semibold text-on-surface">Talvion</div>
+<div class="font-label-sm text-label-sm text-secondary">© 2024 Talvion. AI-Powered Precision.</div>
+<nav class="flex gap-md font-label-sm text-label-sm">
+<a class="text-on-secondary-container hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors" href="#">Terms</a>
+<a class="text-on-secondary-container hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+</footer>
+
+
+</body></html>

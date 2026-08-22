@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Talent - Your Matches</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-highest": "#2d3449",
+                "on-background": "#dae2fd",
+                "tertiary-fixed": "#d8e3fb",
+                "primary": "#c0c1ff",
+                "accent-violet": "#a855f7",
+                "on-tertiary-fixed-variant": "#3c475a",
+                "on-tertiary-fixed": "#111c2d",
+                "tertiary-container": "#8691a7",
+                "inverse-primary": "#494bd6",
+                "error": "#ffb4ab",
+                "text-primary": "#f8fafc",
+                "outline": "#908fa0",
+                "on-error-container": "#ffdad6",
+                "background": "#0b1326",
+                "on-secondary": "#490080",
+                "on-error": "#690005",
+                "secondary-fixed": "#f0dbff",
+                "text-secondary": "#94a3b8",
+                "error-container": "#93000a",
+                "surface-container": "#171f33",
+                "border-subtle": "#334155",
+                "surface-navy": "#0f172a",
+                "surface-variant": "#2d3449",
+                "on-tertiary": "#263143",
+                "on-primary-container": "#0d0096",
+                "on-primary": "#1000a9",
+                "surface": "#0b1326",
+                "surface-dim": "#0b1326",
+                "on-secondary-fixed-variant": "#6900b3",
+                "surface-charcoal": "#1e293b",
+                "primary-container": "#8083ff",
+                "surface-container-low": "#131b2e",
+                "surface-container-high": "#222a3d",
+                "tertiary-fixed-dim": "#bcc7de",
+                "secondary": "#ddb7ff",
+                "on-secondary-fixed": "#2c0051",
+                "inverse-on-surface": "#283044",
+                "accent-indigo": "#6366f1",
+                "outline-variant": "#464554",
+                "tertiary": "#bcc7de",
+                "secondary-fixed-dim": "#ddb7ff",
+                "primary-fixed": "#e1e0ff",
+                "on-primary-fixed-variant": "#2f2ebe",
+                "on-secondary-container": "#d6a9ff",
+                "on-tertiary-container": "#1f2a3c",
+                "surface-container-lowest": "#060e20",
+                "on-surface": "#dae2fd",
+                "on-surface-variant": "#c7c4d7",
+                "surface-bright": "#31394d",
+                "primary-fixed-dim": "#c0c1ff",
+                "surface-tint": "#c0c1ff",
+                "inverse-surface": "#dae2fd",
+                "secondary-container": "#6f00be",
+                "on-primary-fixed": "#07006c"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "container-max": "1280px",
+                "base": "4px",
+                "lg": "24px",
+                "md": "16px",
+                "xl": "32px",
+                "sm": "12px",
+                "gutter": "24px",
+                "xs": "8px"
+        },
+        "fontFamily": {
+                "headline-md": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "body-sm": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "letterSpacing": "0em",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "30px",
+                        {
+                                "lineHeight": "38px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0em",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for left pane */
+        .job-list-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .job-list-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .job-list-scroll::-webkit-scrollbar-thumb {
+            background-color: #464554;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased h-screen flex flex-col pt-[80px] overflow-hidden">
+<!-- TopNavBar from Shared Components -->
+<header class="bg-surface-container-lowest fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg py-md border-b border-outline-variant h-[80px]">
+<div class="flex items-center gap-xl max-w-container-max mx-auto w-full justify-between">
+<div class="flex items-center gap-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Kinetic Talent</h1>
+<nav class="hidden md:flex gap-lg h-full items-center">
+<!-- Matches is active -->
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 cursor-pointer transition-all duration-200 active:opacity-80" href="#">Matches</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary hover:bg-surface-container-low transition-colors cursor-pointer transition-all duration-200 active:opacity-80 py-1 px-2 rounded-DEFAULT" href="#">Saved</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary hover:bg-surface-container-low transition-colors cursor-pointer transition-all duration-200 active:opacity-80 py-1 px-2 rounded-DEFAULT" href="#">Applications</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md px-[16px] py-[8px] rounded-lg hidden md:block">Sign In</button>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-[16px] py-[8px] rounded-lg">Get Started</button>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a person looking confident and approachable, brightly lit in a modern office environment. White light mode minimalist background. Medium shot, clear focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAoiyjUDep4sHfLF5MqG4QrxPWJS9OY-fSsar6robxNILMXpTzEUumIqeYRH_i7FAzmNyBoFAm99CK0L3XIgYA6ZAwAAfFfFVrURqgc3UHiH3YrzJ43cWYe7pe8Rd4YIYO677T8aNtgxAWlUeTO-Mexv3u_mKL7v7ImkpFSp_Fq1WJhg67dP_X7qWQxMAIsrdyMf13aa0_5Q-tz7giCXl8x-QcTZ_I_kQLGL538BMGfKQiomEphGHi6g"/>
+</div>
+</div>
+</header>
+<!-- Tool Bar -->
+<div class="bg-surface-container-lowest border-b border-outline-variant flex-shrink-0 z-40 relative">
+<div class="max-w-container-max mx-auto px-lg py-sm flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-md">
+<!-- Segmented Control -->
+<div class="bg-surface-container-low p-base rounded-lg flex border border-outline-variant">
+<button class="flex-1 bg-surface-container-lowest shadow-sm rounded-DEFAULT px-md py-[6px] font-label-sm text-label-sm text-on-surface border border-outline-variant">Recommended</button>
+<button class="flex-1 px-md py-[6px] font-label-sm text-label-sm text-secondary hover:text-on-surface transition-colors">All matches</button>
+</div>
+<span class="font-label-sm text-label-sm text-primary bg-primary-container/10 px-sm py-[4px] rounded-full hidden md:inline-flex">12 new</span>
+</div>
+<div class="flex items-center gap-md w-full md:w-auto justify-between md:justify-end">
+<!-- Sorting -->
+<div class="flex items-center gap-xs">
+<span class="font-label-sm text-label-sm text-secondary">Sort by:</span>
+<select class="bg-surface-container-lowest border border-outline-variant text-on-surface font-label-sm text-label-sm rounded-md px-sm py-[6px] focus:ring-primary focus:border-primary cursor-pointer">
+<option>Match Score</option>
+<option>Newest</option>
+<option>Salary</option>
+</select>
+</div>
+<!-- Pagination -->
+<div class="flex items-center gap-xs font-label-sm text-label-sm text-secondary border-l border-outline-variant pl-md ml-xs">
+<span>1-10 of 124</span>
+<div class="flex gap-base">
+<button class="p-[2px] rounded hover:bg-surface-container-low text-outline disabled:opacity-50" disabled=""><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="p-[2px] rounded hover:bg-surface-container-low text-on-surface"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<main class="flex-grow flex w-full max-w-container-max mx-auto overflow-hidden">
+<!-- Left Column: Master List -->
+<div class="w-full md:w-[40%] flex-shrink-0 border-r border-outline-variant bg-surface overflow-y-auto job-list-scroll p-md flex flex-col gap-sm">
+<!-- Job Card 1 (Active) -->
+<article class="bg-surface-container-lowest border-2 border-primary rounded-xl p-md shadow-sm cursor-pointer relative">
+<!-- Active Indicator -->
+<div class="absolute -left-1 top-1/2 transform -translate-y-1/2 w-2 h-12 bg-primary rounded-r-md"></div>
+<div class="flex justify-between items-start mb-sm pl-xs">
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">Senior Frontend Engineer</h3>
+<p class="font-body-sm text-body-sm text-secondary">Acme Corp • Remote</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-primary bg-primary-container/10 px-sm py-base rounded-full mb-xs">92% Match</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$140k - $180k</span>
+</div>
+</div>
+<div class="pl-xs">
+<div class="flex flex-wrap gap-xs mb-sm">
+<span class="px-2 py-[2px] bg-surface-container-low text-secondary border border-outline-variant rounded font-label-sm text-[10px]">React</span>
+<span class="px-2 py-[2px] bg-surface-container-low text-secondary border border-outline-variant rounded font-label-sm text-[10px]">TypeScript</span>
+<span class="px-2 py-[2px] bg-surface-container-low text-secondary border border-outline-variant rounded font-label-sm text-[10px]">GraphQL</span>
+</div>
+<div class="flex items-center gap-xs font-body-sm text-body-sm text-secondary text-[12px]">
+<span class="material-symbols-outlined text-primary text-[14px]">check_circle</span> Perfect fit for React skills
+                </div>
+</div>
+</article>
+<!-- Job Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md hover:border-primary-fixed-dim hover:shadow-sm transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">Senior Product Designer</h3>
+<p class="font-body-sm text-body-sm text-secondary">Stripe • San Francisco (Hybrid)</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-primary bg-primary-container/10 px-sm py-base rounded-full mb-xs">98% Match</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$160k - $210k</span>
+</div>
+</div>
+<div>
+<div class="flex flex-wrap gap-xs mb-sm">
+<span class="px-2 py-[2px] bg-surface-container-low text-secondary border border-outline-variant rounded font-label-sm text-[10px]">Figma</span>
+<span class="px-2 py-[2px] bg-surface-container-low text-secondary border border-outline-variant rounded font-label-sm text-[10px]">FinTech</span>
+</div>
+<div class="flex items-center gap-xs font-body-sm text-body-sm text-secondary text-[12px]">
+<span class="material-symbols-outlined text-primary text-[14px]">check_circle</span> Aligns with FinTech experience
+                </div>
+</div>
+</article>
+<!-- Job Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md hover:border-primary-fixed-dim hover:shadow-sm transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">Lead UX Engineer</h3>
+<p class="font-body-sm text-body-sm text-secondary">Vercel • Remote (US)</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-primary bg-primary-container/10 px-sm py-base rounded-full mb-xs">92% Match</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$180k - $220k</span>
+</div>
+</div>
+<div>
+<div class="flex flex-wrap gap-xs mb-sm">
+<span class="px-2 py-[2px] bg-surface-container-low text-secondary border border-outline-variant rounded font-label-sm text-[10px]">Design Systems</span>
+<span class="px-2 py-[2px] bg-surface-container-low text-secondary border border-outline-variant rounded font-label-sm text-[10px]">React</span>
+</div>
+<div class="flex items-center gap-xs font-body-sm text-body-sm text-secondary text-[12px]">
+<span class="material-symbols-outlined text-primary text-[14px]">check_circle</span> Remote first culture
+                </div>
+</div>
+</article>
+<!-- Job Card 4 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md hover:border-primary-fixed-dim hover:shadow-sm transition-all cursor-pointer opacity-70">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">Frontend Architect</h3>
+<p class="font-body-sm text-body-sm text-secondary">Netflix • Los Gatos, CA</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-low px-sm py-base rounded-full mb-xs">85% Match</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$200k - $250k</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-xs font-body-sm text-body-sm text-secondary text-[12px]">
+<span class="material-symbols-outlined text-outline text-[14px]">info</span> Requires relocation
+                </div>
+</div>
+</article>
+</div>
+<!-- Right Column: Detail View -->
+<div class="hidden md:flex w-[60%] flex-col overflow-y-auto bg-surface-container-lowest relative">
+<div class="p-lg flex flex-col gap-lg">
+<!-- Hero Header -->
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0 border border-outline-variant bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A modern, minimalist corporate logo for a technology company" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyCZIZydg0pCzUyAVwV_lnluOLiYubbOCRCnIU1G1bA8zLKFUXD2ibMo0aisJVbP1eEimC5WaNb7M2vGdunZf96LQi2NX-dSGy1Qu27swExaROTMPX4uHKp8E-wonuI6jZ1tfPITYg26YnIkZtLmoYFSl4sd1jywBP7BAcv5r-BchrE267eHwhYuTfnCKVkGsI8Gr0bTt9P9RljXaj6byA4V75E1wdhdy8EZWkqu9R0ElsKf454SjxdA"/>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Senior Frontend Engineer</h1>
+<p class="font-body-md text-body-md text-secondary">Acme Corp · Remote · Full-Time</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md px-[16px] py-[8px] rounded flex items-center gap-xs hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span> Save
+                        </button>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-[16px] py-[8px] rounded hover:opacity-90 transition-opacity shadow-sm">
+                            Apply Now
+                        </button>
+</div>
+</div>
+<!-- Meta Tags -->
+<div class="flex flex-wrap gap-xs pt-sm border-t border-outline-variant">
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">location_on</span> New York, NY (Remote)
+                    </div>
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">work</span> Hybrid / Remote Option
+                    </div>
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">payments</span> $140k - $180k
+                    </div>
+</div>
+</div>
+<!-- Match Logic Section -->
+<div class="bg-surface-container-lowest border border-primary-fixed-dim rounded-lg overflow-hidden relative shadow-sm">
+<div class="bg-gradient-to-r from-primary/10 to-surface-container-lowest p-md border-b border-primary-fixed-dim relative">
+<div class="relative z-10 flex items-center gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-lowest border-[3px] border-primary flex items-center justify-center shadow-sm">
+<span class="font-headline-md text-headline-md text-primary font-bold">92%</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Strong Match</h2>
+<p class="font-body-sm text-body-sm text-secondary">Based on your Kinetic Talent profile and recent experience.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant">
+<!-- Pros -->
+<div class="bg-surface-container-lowest p-md">
+<h3 class="font-label-md text-label-md text-on-surface mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Why it's a fit
+                        </h3>
+<ul class="space-y-sm">
+<li class="flex items-start gap-xs font-body-sm text-body-sm text-on-surface-variant">
+<div class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
+<span>Your 5+ years with React exactly matches their core requirement.</span>
+</li>
+<li class="flex items-start gap-xs font-body-sm text-body-sm text-on-surface-variant">
+<div class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
+<span>Experience leading cross-functional teams aligns with 'Senior' expectations.</span>
+</li>
+</ul>
+</div>
+<!-- Cons / Gaps -->
+<div class="bg-surface-container-lowest p-md">
+<h3 class="font-label-md text-label-md text-on-surface mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-outline text-[18px]">info</span> Potential Gaps
+                        </h3>
+<ul class="space-y-sm">
+<li class="flex items-start gap-xs font-body-sm text-body-sm text-on-surface-variant">
+<div class="w-1.5 h-1.5 rounded-full bg-outline mt-1.5 flex-shrink-0"></div>
+<span>They use GraphQL heavily; your profile indicates mostly REST experience.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Two Column Details -->
+<div class="grid grid-cols-3 gap-lg">
+<!-- Main Content -->
+<div class="col-span-2 flex flex-col gap-lg">
+<div class="prose prose-sm max-w-none font-body-md text-body-md text-on-surface-variant space-y-md">
+<h3 class="font-headline-md text-headline-md text-on-surface m-0 pb-xs border-b border-outline-variant">About the Role</h3>
+<p>We are looking for a Senior Frontend Engineer to join our core product team. You will be responsible for architecting and building highly interactive, performant user interfaces that power our next-generation SaaS platform.</p>
+<h4 class="font-label-md text-label-md text-on-surface mt-md mb-sm">Key Responsibilities</h4>
+<ul class="list-disc pl-md space-y-xs">
+<li>Lead the technical design and implementation of major frontend features.</li>
+<li>Mentor junior engineers and contribute to establishing frontend best practices.</li>
+<li>Optimize applications for maximum speed and scalability.</li>
+</ul>
+<h4 class="font-label-md text-label-md text-on-surface mt-md mb-sm">Requirements</h4>
+<ul class="list-disc pl-md space-y-xs">
+<li>5+ years of professional experience with modern JavaScript frameworks (React preferred).</li>
+<li>Deep understanding of web fundamentals: HTML, CSS, JavaScript, and DOM APIs.</li>
+<li>Experience with state management solutions (Redux, Zustand, Context API).</li>
+</ul>
+</div>
+</div>
+<!-- Sidebar Info -->
+<div class="col-span-1 flex flex-col gap-lg">
+<!-- Skills -->
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-sm">Required Skills</h3>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-[4px] bg-primary-container/20 text-primary border border-primary/30 rounded-full font-label-sm text-label-sm">React</span>
+<span class="px-sm py-[4px] bg-primary-container/20 text-primary border border-primary/30 rounded-full font-label-sm text-label-sm">TypeScript</span>
+<span class="px-sm py-[4px] bg-primary-container/20 text-primary border border-primary/30 rounded-full font-label-sm text-label-sm">GraphQL</span>
+<span class="px-sm py-[4px] bg-surface-container-low text-secondary border border-outline-variant rounded-full font-label-sm text-label-sm">CSS-in-JS</span>
+</div>
+</div>
+<!-- Company Info -->
+<div class="bg-surface rounded-lg p-md border border-outline-variant">
+<h3 class="font-label-md text-label-md text-on-surface mb-sm">About Acme Corp</h3>
+<div class="h-24 rounded bg-surface-container-low border border-outline-variant overflow-hidden mb-sm">
+<img class="w-full h-full object-cover" data-alt="A bright, modern open-plan office interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5Q5K-RXjbYV2penplUSy5c7NAS13kp_77lKSKp7IDpRE0AkomNdSC8lMzo-1cLFtyXgMaUvF78d9AFLIpSgLrjU4-Igi__7KNEZPnDSgxDUZQH2JNSh5QNhE2RRXhWxLIUY91DN50iYsmWxkkJ9A-uryxh8stbTRXAD7kZU2FTsP0BkoEGfdmPlNoHb2Nv98-zJsu4W0qKkGPkaOUccZDamiXXZ185g-Lt23-gGPee0eyFF6D31SHDA"/>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between border-b border-outline-variant pb-xs">
+<span class="font-label-sm text-label-sm text-secondary">Industry</span>
+<span class="font-body-sm text-body-sm text-on-surface text-right">B2B SaaS</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-xs">
+<span class="font-label-sm text-label-sm text-secondary">Size</span>
+<span class="font-body-sm text-body-sm text-on-surface text-right">100 - 500</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
