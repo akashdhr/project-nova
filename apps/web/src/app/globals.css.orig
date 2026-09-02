@@ -4,18 +4,17 @@
 
 @theme {
   --color-primary: #4F46E5;
-
   --color-surface: #F9FAFB;
   --color-surface-card: #FFFFFF;
   --color-content-primary: #111827;
   --color-content-secondary: #4B5563;
   --color-stroke: #E5E7EB;
 
-  --color-dark-surface: #000000;
-  --color-dark-surface-card: #0A0A0A;
+  --color-dark-surface: #121212;
+  --color-dark-surface-card: #1E1E1E;
   --color-dark-content-primary: #F9FAFB;
   --color-dark-content-secondary: #D1D5DB;
-  --color-dark-stroke: #262626;
+  --color-dark-stroke: #374151;
 
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
 }
@@ -35,10 +34,6 @@
     --text-primary: var(--color-dark-content-primary);
     --text-secondary: var(--color-dark-content-secondary);
     --border-color: var(--color-dark-stroke);
-  }
-
-  html {
-    font-size: 90%;
   }
 
   body {

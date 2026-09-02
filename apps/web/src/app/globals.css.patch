@@ -1,0 +1,13 @@
+--- apps/web/src/app/globals.css
++++ apps/web/src/app/globals.css
+@@ -29,6 +29,10 @@
+     --border-color: var(--color-dark-stroke);
+   }
+ 
++  html {
++    font-size: 90%; /* Scales down all rem-based sizes (text, padding, margins) to slightly zoom out the UI */
++  }
++
+   body {
+     background-color: var(--bg-color);
+     color: var(--text-primary);

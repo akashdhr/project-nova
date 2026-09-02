@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
+import multer from 'multer';
 
 const router = Router();
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'dev_secret';
+const upload = multer({ storage: multer.memoryStorage() });
 
 const authMiddleware = (req: any, res: any, next: any) => {
   const authHeader = req.headers.authorization;
@@ -17,14 +19,35 @@ const authMiddleware = (req: any, res: any, next: any) => {
   }
 };
 
-// Dummy resume upload endpoint
-router.post('/', authMiddleware, async (req: any, res) => {
-  // In a real implementation this would handle multipart/form-data
-  const profile = await prisma.profile.update({
-    where: { userId: req.user.userId },
-    data: { resumeUrl: 'mock-s3-url.pdf' }
-  });
-  res.json({ success: true, profile });
+// Resume upload endpoint with consent enforcement
+router.post('/', authMiddleware, upload.single('resume'), async (req: any, res) => {
+  // Enforce consent in the backend
+  const { termsVersion, privacyPolicyVersion } = req.body;
+  
+  if (!termsVersion || !privacyPolicyVersion) {
+    return res.status(400).json({ error: 'Missing legal consent' });
+  }
+
+  try {
+    // Record consent
+    await prisma.userConsent.create({
+      data: {
+        userId: req.user.userId,
+        termsVersion,
+        privacyPolicyVersion
+      }
+    });
+
+    // Mock processing and update profile
+    const profile = await prisma.profile.update({
+      where: { userId: req.user.userId },
+      data: { resumeUrl: req.file ? req.file.originalname : 'mock-s3-url.pdf' }
+    });
+
+    res.json({ success: true, profile });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to process resume' });
+  }
 });
 
 export default router;

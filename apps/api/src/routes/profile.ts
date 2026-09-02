@@ -25,10 +25,10 @@ router.get('/', authMiddleware, async (req: any, res) => {
 });
 
 router.put('/', authMiddleware, async (req: any, res) => {
-  const { targetRoles, industries, locations, workMode, compensation, careerPriorities, dealBreakers } = req.body;
+  const { targetRoles, skills, industries, locations, workMode, compensation, careerPriorities, dealBreakers, avatarUrl, currentRole } = req.body;
   const profile = await prisma.profile.update({
     where: { userId: req.user.userId },
-    data: { targetRoles, industries, locations, workMode, compensation, careerPriorities, dealBreakers }
+    data: { targetRoles, skills, industries, locations, workMode, compensation, careerPriorities, dealBreakers, avatarUrl, currentRole }
   });
   res.json(profile);
 });

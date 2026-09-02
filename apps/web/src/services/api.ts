@@ -46,9 +46,11 @@ export const applicationService = {
 };
 
 export const resumeService = {
-  upload: async (file: File) => {
+  upload: async (file: File, termsVersion: string, privacyPolicyVersion: string) => {
     const formData = new FormData();
     formData.append('resume', file);
+    formData.append('termsVersion', termsVersion);
+    formData.append('privacyPolicyVersion', privacyPolicyVersion);
     return api.post('/resume', formData);
   }
 };

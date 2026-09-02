@@ -1,4 +1,6 @@
-import Link from "next/link";
+const fs = require('fs');
+
+const newHomepage = `import Link from "next/link";
 import { APP_NAME } from "@/config/brand";
 import { CheckCircle2, DollarSign, Target, Users, Sparkles, BrainCircuit, Clock, Brain } from "lucide-react";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
@@ -161,3 +163,6 @@ export default function Home() {
     </div>
   );
 }
+\`;
+
+fs.writeFileSync('apps/web/src/app/page.tsx', newHomepage);

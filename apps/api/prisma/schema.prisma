@@ -17,6 +17,7 @@ model User {
   matches      Match[]
   savedJobs    SavedJob[]
   applications Application[]
+  consents     UserConsent[]
 }
 
 model Profile {
@@ -24,6 +25,7 @@ model Profile {
   userId           String   @unique
   user             User     @relation(fields: [userId], references: [id])
   firstName        String?
+  currentRole      String?
   lastName         String?
   targetRoles      String[]
   industries       String[]
@@ -33,6 +35,9 @@ model Profile {
   careerPriorities String[]
   dealBreakers     String[]
   resumeUrl        String?
+  avatarUrl        String?
+  skills           String[]
+
 }
 
 model Job {
@@ -86,4 +91,15 @@ model Application {
   appliedAt DateTime @default(now())
 
   @@unique([userId, jobId])
+}
+
+model UserConsent {
+  id                    String   @id @default(uuid())
+  userId                String
+  user                  User     @relation(fields: [userId], references: [id])
+  termsVersion          String
+  privacyPolicyVersion  String
+  acceptedAt            DateTime @default(now())
+
+  @@index([userId])
 }

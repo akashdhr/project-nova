@@ -1,4 +1,6 @@
-import Link from "next/link";
+import re
+
+new_homepage = """import Link from "next/link";
 import { APP_NAME } from "@/config/brand";
 import { CheckCircle2, DollarSign, Target, Users, Sparkles, BrainCircuit, Clock, Brain } from "lucide-react";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
@@ -161,3 +163,8 @@ export default function Home() {
     </div>
   );
 }
+"""
+
+with open("apps/web/src/app/page.tsx", "w") as f:
+    f.write(new_homepage)
+
