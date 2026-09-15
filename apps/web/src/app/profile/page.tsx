@@ -14,6 +14,8 @@ export default function ProfilePage() {
   const [isEditingResume, setIsEditingResume] = useState(false);
   const [isEditingSkills, setIsEditingSkills] = useState(false);
   const [isEditingRole, setIsEditingRole] = useState(false);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [nameForm, setNameForm] = useState({ firstName: "", lastName: "" });
   const [roleInput, setRoleInput] = useState("");
   const [editingCard, setEditingCard] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<any>({});
@@ -117,10 +119,10 @@ export default function ProfilePage() {
         const res = await profileService.get();
         setProfile({
           ...res.data,
-          firstName: res.data?.firstName || "Alex",
-          lastName: res.data?.lastName || "Mercer",
+          firstName: res.data?.firstName || "",
+          lastName: res.data?.lastName || "",
           currentRole: res.data?.currentRole || "Senior Product Designer",
-          resumeUrl: res.data?.resumeUrl || "Alex_Mercer_Resume_2024.pdf",
+          resumeUrl: res.data?.resumeUrl || "",
           skills: res.data?.skills?.length ? res.data.skills : ["Product Design", "UX Strategy", "Figma", "Design Systems", "User Research"],
           targetRoles: res.data?.targetRoles?.length ? res.data.targetRoles : ["Senior Product Designer", "UX Director"],
           industries: res.data?.industries?.length ? res.data.industries : ["SaaS", "Fintech"],
@@ -169,9 +171,33 @@ export default function ProfilePage() {
                       <Camera className="w-4 h-4 text-white" />
                     </div>
                   </div>
-                  <div>
-                    <h2 className="font-bold text-[var(--text-primary)] text-lg">{profile.firstName} {profile.lastName}</h2>
-                    <p className="text-xs text-[var(--text-secondary)]">{profile.currentRole}</p>
+                  <div className="flex-1 w-full overflow-hidden pr-2">
+                    {isEditingName ? (
+                      <div className="flex flex-col space-y-2 mt-1 mb-2">
+                        <input type="text" value={nameForm.firstName} onChange={e => setNameForm({...nameForm, firstName: e.target.value})} className="w-full bg-[var(--bg-color)] border border-[var(--border-color)] rounded-md px-2 py-1 text-sm text-[var(--text-primary)] focus:outline-none focus:border-primary" placeholder="First Name" />
+                        <input type="text" value={nameForm.lastName} onChange={e => setNameForm({...nameForm, lastName: e.target.value})} className="w-full bg-[var(--bg-color)] border border-[var(--border-color)] rounded-md px-2 py-1 text-sm text-[var(--text-primary)] focus:outline-none focus:border-primary" placeholder="Last Name" />
+                        <div className="flex space-x-2">
+                          <button onClick={() => {
+                            profileService.update({ firstName: nameForm.firstName, lastName: nameForm.lastName }).then(() => {
+                              setProfile({ ...profile, firstName: nameForm.firstName, lastName: nameForm.lastName });
+                              setIsEditingName(false);
+                            });
+                          }} className="text-xs bg-primary text-white px-2 py-1 rounded">Save</button>
+                          <button onClick={() => setIsEditingName(false)} className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] px-2 py-1">Cancel</button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="group/name relative">
+                        <h2 className="font-bold text-[var(--text-primary)] text-lg truncate pr-6">{profile.firstName} {profile.lastName}</h2>
+                        <button onClick={() => {
+                          setNameForm({ firstName: profile.firstName || "", lastName: profile.lastName || "" });
+                          setIsEditingName(true);
+                        }} className="absolute right-0 top-1 opacity-0 group-hover/name:opacity-100 text-[var(--text-secondary)] hover:text-primary transition-opacity">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                        </button>
+                        <p className="text-xs text-[var(--text-secondary)] truncate">{profile.currentRole}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 

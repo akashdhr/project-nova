@@ -2,21 +2,44 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { authService } from "@/services/api";
 import { APP_NAME } from "@/config/brand";
+import { createClient } from "@/lib/supabase/browser";
+import api from "@/services/api"; // Added API to fetch profile
 
 export default function SignIn() {
   const router = useRouter();
   const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
     try {
-      const res = await authService.login(form);
-      localStorage.setItem("token", res.data.token);
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: form.email,
+        password: form.password,
+      });
+      if (error) throw error;
+      
+      const token = data.session?.access_token || "";
+      localStorage.setItem("token", token);
+
+      // Check if profile is complete
+      try {
+        const res = await api.get('/profile');
+        const profile = res.data;
+        if (!profile.resumeUrl || !profile.targetRoles || profile.targetRoles.length === 0) {
+          router.push("/profile/setup");
+          return;
+        }
+      } catch (err) {
+        console.error("Error fetching profile to check completeness", err);
+      }
+
       router.push("/matches");
-    } catch (err) {
-      alert("Invalid credentials");
+    } catch (err: any) {
+      setError(err.message || "Invalid credentials");
     }
   };
 
@@ -28,6 +51,7 @@ export default function SignIn() {
           <h2 className="text-xl font-semibold">Sign in to your account</h2>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
           <div className="space-y-1">
             <label className="text-sm font-medium">Email</label>
             <input required type="email" className="w-full p-2.5 rounded-lg border border-[var(--border-color)] bg-transparent focus:outline-none focus:border-primary" onChange={e => setForm({...form, email: e.target.value})} />

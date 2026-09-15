@@ -6,7 +6,7 @@ import { LegalModal } from "./LegalModal";
 import { TermsContent } from "./TermsContent";
 
 interface ResumeUploaderProps {
-  onSuccess?: () => void;
+  onSuccess?: (profile?: any) => void;
   compact?: boolean;
 }
 
@@ -41,9 +41,9 @@ export function ResumeUploader({ onSuccess, compact = false }: ResumeUploaderPro
     setResumeState('uploading');
     setShowError(false);
     try {
-      await resumeService.upload(selectedFile, "1.0", "1.0");
+      const res = await resumeService.upload(selectedFile, "1.0", "1.0");
       setResumeState('uploaded');
-      if (onSuccess) onSuccess();
+      if (onSuccess) onSuccess(res.data?.profile);
     } catch (err) {
       setResumeState('error');
     }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { APP_NAME } from "@/config/brand";
-import { CheckCircle2, DollarSign, Target, Users, Sparkles, BrainCircuit, Clock, Brain } from "lucide-react";
+import { CheckCircle2, IndianRupee, Target, Users, Sparkles, BrainCircuit, Clock, Brain } from "lucide-react";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export default function Home() {
@@ -58,7 +58,7 @@ export default function Home() {
             
             {/* Floating Insight Card 2 */}
             <div className="absolute top-10 -right-8 md:-right-24 bg-white/90 dark:bg-[#111111]/90 backdrop-blur-md border border-[var(--border-color)] shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] rounded-xl px-4 py-2 z-10 animate-float-delayed hidden sm:flex items-center gap-2">
-              <DollarSign className="text-emerald-500 w-[18px] h-[18px]" />
+              <IndianRupee className="text-emerald-500 w-[18px] h-[18px]" />
               <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)]">Salary Fit</span>
             </div>
             
@@ -92,7 +92,7 @@ export default function Home() {
                   92% Match
                 </span>
                 <span className="bg-neutral-100 dark:bg-neutral-900/50 border border-[var(--border-color)] text-[var(--text-secondary)] text-xs font-bold px-3 py-1.5 rounded-full">
-                  $160k - $190k
+                  ₹160k - ₹190k
                 </span>
               </div>
               

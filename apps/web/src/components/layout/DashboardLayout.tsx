@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { APP_NAME } from "@/config/brand";
 import { User, LogOut } from "lucide-react";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { createClient } from "@/lib/supabase/browser";
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -15,7 +16,11 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
     { name: 'Applications', href: '/applications' },
   ];
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+    } catch(e) {}
     localStorage.removeItem("token");
     router.push("/signin");
   };

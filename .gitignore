@@ -6,3 +6,13 @@ build
 .env.local
 .DS_Store
 coverage
+
+# Ensure all nested env files are ignored
+**/.env
+**/.env.*
+
+# Local storage
+storage/
+apps/api/storage/
+__pycache__/
+*.pyc

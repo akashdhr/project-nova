@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { matchService, savedJobService, applicationService } from "@/services/api";
-import { MapPin, Briefcase, DollarSign, Bookmark, BookmarkCheck, CheckCircle2, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Briefcase, IndianRupee, Bookmark, BookmarkCheck, CheckCircle2, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { APP_NAME } from "@/config/brand";
 
 export default function MatchesPage() {
@@ -163,7 +163,7 @@ export default function MatchesPage() {
                 </span>
                 {selectedMatch.job.salary && (
                   <span className="flex items-center px-3 py-1.5 text-xs font-medium border border-[var(--border-color)] rounded-md bg-[var(--card-bg)] text-[var(--text-secondary)]">
-                    <DollarSign className="w-4 h-4 mr-2" /> {selectedMatch.job.salary}
+                    <IndianRupee className="w-4 h-4 mr-2" /> {selectedMatch.job.salary}
                   </span>
                 )}
               </div>
