@@ -3,9 +3,9 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select
 from typing import Any, Dict
 from pydantic import BaseModel
-from .db.session import get_db
-from .core.auth import get_current_user
-from .models.entities import User, CandidateProfile, CareerPreferences, Resume, JobMatch, Job, UserInteraction, InteractionType
+from app.db.session import get_db
+from app.core.auth import get_current_user
+from app.models.entities import User, CandidateProfile, CareerPreferences, Resume, JobMatch, Job, UserInteraction, InteractionType
 from uuid import UUID
 from app.services.storage import storage
 from app.core.config import settings
@@ -112,7 +112,7 @@ async def upload_legacy_resume(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    from app.main import upload_resume
+    from app.routers.candidates import upload_resume
     res = await upload_resume(current_user.id, resume, db, current_user)
     return {"success": True, "profile": get_profile(db, current_user)}
 
@@ -142,7 +142,7 @@ def get_matches(db: Session = Depends(get_db), current_user: User = Depends(get_
 
 @router.post('/saved/{job_id}/save')
 def save_job(job_id: UUID, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    from app.main import save
+    from app.routers.jobs import save
     save(job_id, db, current_user)
     return {"success": True}
 
@@ -175,7 +175,7 @@ def get_saved(db: Session = Depends(get_db), current_user: User = Depends(get_cu
 
 @router.post('/applications')
 def apply_job(data: dict, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    from app.main import apply_click
+    from app.routers.jobs import apply_click
     job_id = data.get("jobId")
     if job_id:
         apply_click(UUID(job_id), db, current_user)
